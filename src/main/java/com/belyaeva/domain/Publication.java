@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,9 @@ public class Publication {
     @Column(name = "image")
     private String image;
 
+    @Column(name = "icon")
+    private String icon;
+
     @Column(name = "info")
     private String info;
 
@@ -33,7 +37,7 @@ public class Publication {
     @JoinColumn(name = "author_id")
     private Author author;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "publication")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "publication", cascade = CascadeType.ALL)
     private List<Comment> commentList;
 
     @Override

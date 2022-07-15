@@ -2,11 +2,12 @@ package com.belyaeva.service;
 
 import com.belyaeva.domain.Publication;
 
+import java.io.File;
 import java.util.List;
 
 public interface PublicationService {
 
-    Publication insert(String image, String info, String nameAuthor);
+    Publication insert(String icon, String info, String nameAuthor);
 
     Publication update(Long id, String info);
 

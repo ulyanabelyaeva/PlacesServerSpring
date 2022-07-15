@@ -1,13 +1,12 @@
 package com.belyaeva.rest.dto;
 
-import com.belyaeva.domain.Author;
-import com.belyaeva.domain.Comment;
 import com.belyaeva.domain.Publication;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +20,8 @@ public class PublicationDto {
     private Long id;
 
     private String image;
+
+    private String icon;
 
     private String info;
 
@@ -41,10 +42,10 @@ public class PublicationDto {
         return new PublicationDto(
                 publication.getId(),
                 publication.getImage(),
+                publication.getIcon(),
                 publication.getInfo(),
                 publication.getAuthor().getName(),
                 commentDtoList
         );
     }
-
 }

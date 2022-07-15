@@ -8,6 +8,10 @@ import com.belyaeva.repository.PublicationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -18,18 +22,31 @@ public class PublicationServiceImpl implements PublicationService{
     private final AuthorRepository authorRepository;
 
     @Override
-    public Publication insert(String image, String info, String nameAuthor) {
+    public Publication insert(String icon, String info, String nameAuthor) {
 
         Author author = authorRepository.findByName(nameAuthor);
 
         Publication publication = Publication.builder()
-                .image(image)
+                .icon(icon)
                 .author(author)
                 .info(info)
                 .build();
 
-        System.out.println(publication);
+        /*try{
+            FileInputStream fileInputStream = new FileInputStream(icon);
+            FileOutputStream fileOutputStream = new FileOutputStream(new File("/images", icon.getName()));
+            byte fileContent[] = new byte[(int) icon.length()];
+            fileInputStream.read(fileContent);
+            fileInputStream.close();
+            fileOutputStream.write(fileContent);
+            fileOutputStream.close();
 
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        System.out.println(publication);
+*/
         return publicationRepository.save(publication);
     }
 

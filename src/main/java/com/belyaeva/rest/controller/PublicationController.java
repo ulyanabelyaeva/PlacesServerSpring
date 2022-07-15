@@ -34,11 +34,11 @@ public class PublicationController {
 
     @PostMapping("/publication")
     public PublicationDto insertPublication(
-            @RequestParam String image,
+            @RequestParam String icon,
             @RequestParam String info,
             @RequestParam String nameAuthor){
 
-        Publication publication = publicationService.insert(image, info, nameAuthor);
+        Publication publication = publicationService.insert(icon, info, nameAuthor);
         return PublicationDto.toDto(publication);
     }
 
